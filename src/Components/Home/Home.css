@@ -1,0 +1,23 @@
+.home .bg-img{
+    width: 100%;
+    height: 350px;
+    background: url(../../img/volunteer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.16;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.home{
+    position: relative;
+}
+
+.home .search-btn{
+    border-radius: 0px 5px 5px 0px;
+}
+
+.home .search{
+    border-radius: 5px 0px 0px 5px;
+}

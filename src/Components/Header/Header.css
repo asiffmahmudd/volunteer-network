@@ -1,0 +1,23 @@
+nav .navbar-brand img{
+    max-height: 45px;
+}
+
+header .register-btn, header .admin-btn{
+    width: 100px;
+}
+
+header ul li a{
+    color: black !important;
+    font-weight: bold !important;
+}
+
+header nav ul li{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+header nav ul li:nth-child(5), header nav ul li:nth-child(6){
+    margin-right: 0px !important;
+}
