@@ -1,0 +1,10 @@
+.register .registration-form input{
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0px !important;
+}
+
+.register .registration-form .form-group span{
+    color: red;
+}

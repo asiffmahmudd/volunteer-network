@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../img/logo.png';
+import { UserContext } from '../../App';
+import { handleSignOut } from '../../firebaseManager';
 
 const Header = () => {
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
+    const logout = () => {
+        handleSignOut()
+        .then(data => {
+            if(data){
+                setLoggedInUser({});
+            }
+        })
+    }
+
     return (
         <header>
             <div className="container">
@@ -28,12 +42,21 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/blog">Blog</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/register"><button className="register-btn btn btn-primary">Register</button></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/admin"><button className="admin-btn btn btn-dark">Admin</button></Link>
-                            </li>
+                            { !loggedInUser.isLoggedIn &&
+                            <>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/register"><button className="register-btn btn btn-primary">Register</button></Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/login"><button className="admin-btn btn btn-dark">Admin</button></Link>
+                                </li>
+                            </>
+                            }
+                            { loggedInUser.isLoggedIn &&
+                                <li className="nav-item">
+                                    <button className="register-btn btn btn-primary" onClick={logout}>Log Out</button>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </nav>
