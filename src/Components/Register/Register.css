@@ -8,3 +8,7 @@
 .register .registration-form .form-group span{
     color: red;
 }
+
+.register .form-container{
+    background-color: white;
+}

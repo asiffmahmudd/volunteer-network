@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
+import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Login/>
+            </Route>
+            <Route path="/events">
+              <AdminPanel/>
             </Route>
           </Switch>
       </Router>

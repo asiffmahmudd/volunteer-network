@@ -1,0 +1,39 @@
+.add-event input#banner {
+    display: block;
+}
+
+.add-event label.btn.btn-outline-primary.btn-file {
+    background: #add5ff9a !important;
+}
+
+.add-event form textarea#desc {
+    height: 130px !important;
+}
+
+.add-event .error{
+    color: red;
+}
+
+.add-event .banner-btn{
+    background : #add5ffb0;
+    display : block;
+    width : 150px;
+}
+.add-event .banner-btn:active, .add-event .banner-btn:hover{
+    background: #add5ff !important;
+}
+
+.add-event .add-event-form{
+    margin: 3rem;
+}
+
+.add-event .add-event-form .row{
+    padding: 2rem;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.add-event .add-event-form .btn-submit{
+    width: 120px;
+    margin-right: -15px;
+}

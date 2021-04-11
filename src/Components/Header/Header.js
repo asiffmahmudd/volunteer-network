@@ -18,6 +18,10 @@ const Header = () => {
         })
     }
 
+    const btnStyle = {
+        'marginRight': '0px'
+    }
+
     return (
         <header>
             <div className="container">
@@ -42,9 +46,9 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/blog">Blog</Link>
                             </li>
-                            { !loggedInUser.isLoggedIn &&
+                            { !loggedInUser?.isLoggedIn &&
                             <>
-                                <li className="nav-item">
+                                <li className="nav-item" style={btnStyle}>
                                     <Link className="nav-link" to="/register"><button className="register-btn btn btn-primary">Register</button></Link>
                                 </li>
                                 <li className="nav-item">
@@ -52,10 +56,15 @@ const Header = () => {
                                 </li>
                             </>
                             }
-                            { loggedInUser.isLoggedIn &&
+                            { loggedInUser?.isLoggedIn &&
+                            <>
+                                <li className="nav-item">
+                                    {loggedInUser?.name}
+                                </li>
                                 <li className="nav-item">
                                     <button className="register-btn btn btn-primary" onClick={logout}>Log Out</button>
                                 </li>
+                            </>
                             }
                         </ul>
                     </div>

@@ -18,6 +18,6 @@ header nav ul li{
     margin-right: 1rem;
 }
 
-header nav ul li:nth-child(5), header nav ul li:nth-child(6){
-    margin-right: 0px !important;
+header nav ul li{
+    font-weight: 900;
 }
