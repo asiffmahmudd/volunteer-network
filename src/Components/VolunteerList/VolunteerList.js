@@ -1,9 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import './VolunteerList.css';
 
 const VolunteerList = () => {
+
+    const [volunteers, setVolunteers] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:4000/volunteerList')
+        .then(res => res.json())
+        .then(data => setVolunteers(data));
+    }, []);
+
+    const handleDelete = (event,id) => {
+        const url = `http://localhost:4000/deleteVolunteer/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                
+            }
+        })
+    }
+    
     return (
         <div id="volunteer-list">
-            volunteerlist
+            <div className="list-container">
+                <div className="">
+                    {   volunteers.length === 0 &&
+                        <h1 className="m-5">There are no volunteers registered at this moment</h1>
+                    }
+                    {
+                        volunteers.length > 0 &&
+                        <>
+                            <table className="table table-borderless">
+                                <thead className="table-heading">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Registering Date</th>
+                                        <th scope="col">Volunteer Task</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                    
+                                <tbody>
+                                    {
+                                        volunteers.map(volunteer => {
+                                            return (<tr>
+                                                        <td>{volunteer.volunteer.fullname}</td>
+                                                        <td>{volunteer.volunteer.email}</td>
+                                                        <td>{volunteer.volunteer.date}</td>
+                                                        <td>{volunteer.volunteer.task}</td>
+                                                        <td><span onClick={() => handleDelete(volunteer._id)} className="delete"><FontAwesomeIcon icon={faTrashAlt} color="white" /></span></td>
+                                                    </tr>);
+                                        })
+                                    }
+                                    
+                                </tbody>
+                            </table>
+                        </>
+                    }
+                </div>
+            </div>
         </div>
     );
 };

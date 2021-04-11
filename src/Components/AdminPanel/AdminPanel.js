@@ -19,6 +19,8 @@ const AdminPanel = () => {
         event.target.classList.add('active');
     }
 
+    
+
     return (
         <div className="admin-panel">
             <header>
@@ -45,10 +47,12 @@ const AdminPanel = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-md-12" id="admin-view">
-                        <VolunteerList></VolunteerList>
-                        <AddEvent></AddEvent>
+                <div className="main-content">
+                    <div>
+                        <div  id="admin-view">
+                            <VolunteerList></VolunteerList>
+                            <AddEvent></AddEvent>
+                        </div>
                     </div>
                 </div>
             </div>

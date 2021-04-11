@@ -1,0 +1,115 @@
+#volunteer-list .delete{
+    padding: 9px 12px;
+    background: rgb(238, 88, 88);
+    border-radius: 6px;
+}
+
+#volunteer-list .list-container{
+    margin: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 30px;
+}
+
+#volunteer-list .table-heading{
+    background: ghostwhite;
+    border-radius: 30px;
+}
+
+table th:first-child{
+    border-radius:10px 0 0 10px;
+}
+
+table th:last-child{
+    border-radius:0 10px 10px 0;
+}
+
+.delete{
+    cursor: pointer;
+}
+
+@media(max-width: 765px){
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin: 0 0 1rem 0;
+    }
+    
+    tr:nth-child(odd) {
+        background: ghostwhite;
+        padding: 1rem;
+        border-radius: 30px;
+    }
+    tr:nth-child(even) {
+        background: ghostwhite;
+        padding: 1rem;
+        border-radius: 30px;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50% !important;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 0;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    td:nth-of-type(1):before { content: "Name"; }
+    td:nth-of-type(2):before { content: "Email"; }
+    td:nth-of-type(3):before { content: "Date"; }
+    td:nth-of-type(4):before { content: "Task"; }
+    td:nth-of-type(5):before { content: "Action"; }
+
+    td:before{
+        font-weight: 700;
+    }
+}
+
+@media(max-width: 765px) and (min-width:535px){
+    td {
+        padding-left: 50% !important;
+    }
+}
+
+@media(max-width: 534px) and (min-width:450px){
+    td{
+        padding-left: 30% !important;
+    }
+    #volunteer-list .list-container{
+        margin: unset !important;
+        padding: 1rem !important;
+        border-radius: unset;
+    }
+}
+
+@media(max-width: 449px){
+    td{
+        padding-left: unset !important;
+        padding-top: 10% !important;
+    }
+    #volunteer-list .list-container{
+        margin: unset !important;
+        padding: 1rem !important;
+        border-radius: unset;
+    }
+}

@@ -23,6 +23,9 @@
         width: 100%;
         margin: 0 !important; 
     }
+    .admin-panel .admin-panel-container .main-content{
+        width: 100% !important;
+    }
 }
 
 .admin-panel .sidebar{
@@ -48,4 +51,20 @@
 
 .admin-panel .active{
     color: #007bff;
+}
+
+.admin-panel .sidebar ul li{
+    cursor: pointer;
+}
+
+.admin-panel .add-event{
+    display: none;
+}
+
+.admin-panel .admin-panel-container .main-content{
+    width: 80%;
+}
+
+.admin-panel .row {
+    margin-right: unset;
 }
