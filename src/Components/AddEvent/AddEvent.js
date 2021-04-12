@@ -6,7 +6,7 @@ import './AddEvent.css';
 
 const AddEvent = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [bannerError, setBannerError] = useState({
         error : false,
         message : ''
@@ -26,7 +26,26 @@ const AddEvent = () => {
                 message: ''
             }
             setBannerError(error);
-            console.log(data)
+
+            const imageData = new FormData();
+            imageData.set('key', '0c9c52f3c2c70e376333024c7dd177e2');
+            imageData.append('image', data.banner[0])
+
+            fetch('https://api.imgbb.com/1/upload', {
+                method: 'POST',
+                body: imageData
+            })
+            .then(res => res.json())
+            .then(result => {
+                const eventData = {
+                    title: data.title,
+                    date: data.date,
+                    desc: data.desc,
+                    image: result.data.display_url
+                }
+                submitData(eventData)
+            })
+            .catch(err => alert(err))
         }
         else{
             const error = {
@@ -36,6 +55,25 @@ const AddEvent = () => {
             setBannerError(error);
         }
         
+    }
+
+    const submitData = (eventData) => {
+        fetch('http://localhost:4000/addEvent/', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(eventData)
+        })
+        .then(result => {
+            if(result){
+                alert("Event added successfully");
+                reset();
+            }
+        })
+        .catch(err => {
+            alert(err);
+        })
     }
 
     const bannerClick = () => {
@@ -65,7 +103,7 @@ const AddEvent = () => {
                         <label htmlFor="banner">Banner</label>
                         <span className="btn btn-outline-primary btn-file banner-btn" onClick={bannerClick}>
                             <FontAwesomeIcon icon={faCloudUploadAlt} color="#007bff"/> Upload Image 
-                            <input type="file" name="banner"  {...register("banner", { required: true })} className="banner-img" id="banner" hidden />
+                            <input type="file" name="banner"  {...register("banner", { required: true })}  className="banner-img" id="banner" hidden />
                         </span>
                         {bannerError.error && <span className="error">{bannerError.message}</span>}
                     </div>

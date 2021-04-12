@@ -11,17 +11,16 @@ const VolunteerList = () => {
         fetch('http://localhost:4000/volunteerList')
         .then(res => res.json())
         .then(data => setVolunteers(data));
-    }, []);
+    }, [volunteers]);
 
-    const handleDelete = (event,id) => {
-        const url = `http://localhost:4000/deleteVolunteer/${id}`;
-        fetch(url, {
+    const handleDelete = (id) => {
+        fetch(`http://localhost:4000/deleteVolunteer/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
         .then(data => {
             if(data){
-                
+                alert("Volunteer deleted successfully")
             }
         })
     }
@@ -49,15 +48,15 @@ const VolunteerList = () => {
                                     
                                 <tbody>
                                     {
-                                        volunteers.map(volunteer => {
-                                            return (<tr>
+                                        volunteers.map(volunteer =>  
+                                                    <tr>
                                                         <td>{volunteer.volunteer.fullname}</td>
                                                         <td>{volunteer.volunteer.email}</td>
                                                         <td>{volunteer.volunteer.date}</td>
                                                         <td>{volunteer.volunteer.task}</td>
-                                                        <td><span onClick={() => handleDelete(volunteer._id)} className="delete"><FontAwesomeIcon icon={faTrashAlt} color="white" /></span></td>
-                                                    </tr>);
-                                        })
+                                                        <td><span onClick = {() => handleDelete(`${volunteer._id}`)} className="delete"><FontAwesomeIcon icon={faTrashAlt} color="white" /></span></td>
+                                                    </tr>
+                                        )
                                     }
                                     
                                 </tbody>
