@@ -27,6 +27,7 @@ const AddEvent = () => {
             }
             setBannerError(error);
 
+            document.getElementById("loading").style.display = 'block';
             const imageData = new FormData();
             imageData.set('key', '0c9c52f3c2c70e376333024c7dd177e2');
             imageData.append('image', data.banner[0])
@@ -58,7 +59,7 @@ const AddEvent = () => {
     }
 
     const submitData = (eventData) => {
-        fetch('http://localhost:4000/addEvent/', {
+        fetch('https://volunteernetworkserver.herokuapp.com/addEvent/', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -67,6 +68,7 @@ const AddEvent = () => {
         })
         .then(result => {
             if(result){
+                document.getElementById("loading").style.display = 'none';
                 alert("Event added successfully");
                 reset();
             }
@@ -82,6 +84,11 @@ const AddEvent = () => {
 
     return (
         <div className="add-event" id="event-add">
+            <div className="text-center mt-3" id="loading" style={{'display':"none"}}>
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
             <form onSubmit={handleSubmit(onSubmit)} className="add-event-form">
                 <div className="row">
                     <div className="form-group col-md-6">

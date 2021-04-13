@@ -21,3 +21,13 @@
 .home .search{
     border-radius: 5px 0px 0px 5px;
 }
+
+@media(max-width: 991px){
+    header nav ul li{
+        margin-right: unset !important;
+    }
+}
+
+.home .card-deck{
+    width: 100%;
+}

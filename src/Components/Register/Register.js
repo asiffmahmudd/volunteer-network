@@ -9,7 +9,7 @@ const Register = () => {
     const history = useHistory();
     
     const onSubmit = data => {
-        fetch('http://localhost:4000/addVolunteer', {
+        fetch('https://volunteernetworkserver.herokuapp.com/addVolunteer', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'

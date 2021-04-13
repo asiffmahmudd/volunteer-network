@@ -9,6 +9,10 @@ import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
+import Blog from "./Components/Blog/Blog";
+import Donation from "./Components/Donation/Donation";
+import Events from "./Components/Events/Events";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 export const UserContext = createContext();
 
@@ -29,8 +33,17 @@ function App() {
               <Login/>
             </Route>
             <Route path="/events">
-              <AdminPanel/>
+              <Events></Events>
             </Route>
+            <Route path="/blog">
+              <Blog></Blog>
+            </Route>
+            <Route path="/donation">
+              <Donation></Donation>
+            </Route>
+            <PrivateRoute path="/adminpanel">
+              <AdminPanel/>
+            </PrivateRoute>
           </Switch>
       </Router>
     </UserContext.Provider>

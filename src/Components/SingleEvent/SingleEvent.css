@@ -1,0 +1,14 @@
+.card{
+    background: transparent !important;
+}
+
+.card-title{
+    font-weight: bold;
+    color: white;
+}
+
+.card-body{
+    margin-top: -5px;
+    border-radius: 0px 0px 18px 18px;
+    background: sta;
+}

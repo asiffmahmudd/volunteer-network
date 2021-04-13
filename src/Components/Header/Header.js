@@ -51,9 +51,7 @@ const Header = () => {
                                 <li className="nav-item" style={btnStyle}>
                                     <Link className="nav-link" to="/register"><button className="register-btn btn btn-primary">Register</button></Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/login"><button className="admin-btn btn btn-dark">Admin</button></Link>
-                                </li>
+                                
                             </>
                             }
                             { loggedInUser?.isLoggedIn &&
@@ -66,6 +64,9 @@ const Header = () => {
                                 </li>
                             </>
                             }
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/adminpanel"><button className="admin-btn btn btn-dark">Admin</button></Link>
+                            </li>
                         </ul>
                     </div>
                 </nav>

@@ -8,13 +8,13 @@ const VolunteerList = () => {
     const [volunteers, setVolunteers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:4000/volunteerList')
+        fetch('https://volunteernetworkserver.herokuapp.com/volunteerList')
         .then(res => res.json())
         .then(data => setVolunteers(data));
     }, [volunteers]);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:4000/deleteVolunteer/${id}`, {
+        fetch(`https://volunteernetworkserver.herokuapp.com/deleteVolunteer/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
