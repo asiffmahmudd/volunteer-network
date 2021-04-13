@@ -10,6 +10,7 @@ const Home = () => {
 
     useEffect(() => {
         let url = "";
+        document.getElementById("spinner").style.display = 'block';
         if(search === ""){
             url = 'https://volunteernetworkserver.herokuapp.com/events/';
         }
@@ -20,7 +21,8 @@ const Home = () => {
         fetch(url)
         .then(res => res.json())
         .then(data => {
-            setEvents(data)
+            setEvents(data);
+            document.getElementById("spinner").style.display = 'none';
         })
     }, [search]);
 
@@ -52,8 +54,14 @@ const Home = () => {
             <div className="container">
                 {
                     events.length === 0 &&
-                    <h1 className="text-center mt-5">Sorry, No event found</h1>
+                    <h1 className="text-center mt-4">Sorry, No event found</h1>
                 }
+                <div className="mt-4 d-flex justify-content-center">
+                    <div class="spinner-border text-primary text-center" role="status" style={{'display': 'none'}} id="spinner">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                
                 <div className="row mt-5">
                     <div class="card-deck">
                         {
