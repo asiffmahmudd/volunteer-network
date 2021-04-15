@@ -6,12 +6,15 @@ import './VolunteerList.css';
 const VolunteerList = () => {
 
     const [volunteers, setVolunteers] = useState([]);
+    const [change, setChange] = useState(false);
 
     useEffect(() => {
         fetch('https://volunteernetworkserver.herokuapp.com/volunteerList')
         .then(res => res.json())
-        .then(data => setVolunteers(data));
-    }, [volunteers]);
+        .then(data => {
+            setVolunteers(data)  
+        });
+    }, [change]);
 
     const handleDelete = (id) => {
         fetch(`https://volunteernetworkserver.herokuapp.com/deleteVolunteer/${id}`, {
@@ -20,7 +23,8 @@ const VolunteerList = () => {
         .then(res => res.json())
         .then(data => {
             if(data){
-                alert("Volunteer deleted successfully")
+                alert("Volunteer deleted successfully");
+                setChange(true);
             }
         })
     }

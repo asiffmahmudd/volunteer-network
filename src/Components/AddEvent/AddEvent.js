@@ -28,6 +28,7 @@ const AddEvent = () => {
             setBannerError(error);
 
             document.getElementById("loading").style.display = 'block';
+            
             const imageData = new FormData();
             imageData.set('key', '0c9c52f3c2c70e376333024c7dd177e2');
             imageData.append('image', data.banner[0])
