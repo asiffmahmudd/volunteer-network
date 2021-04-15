@@ -17,6 +17,7 @@ const VolunteerList = () => {
     }, [change]);
 
     const handleDelete = (id) => {
+        setChange(true);
         fetch(`https://volunteernetworkserver.herokuapp.com/deleteVolunteer/${id}`, {
             method: 'DELETE'
         })
