@@ -7,8 +7,10 @@ const Home = () => {
 
     const [events, setEvents] = useState([]);
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         let url = "";
         document.getElementById("spinner").style.display = 'block';
         if(search === ""){
@@ -22,6 +24,7 @@ const Home = () => {
         .then(res => res.json())
         .then(data => {
             setEvents(data);
+            setLoading(false);
             document.getElementById("spinner").style.display = 'none';
         })
     }, [search]);
@@ -53,7 +56,7 @@ const Home = () => {
 
             <div className="container">
                 {
-                    events.length === 0 &&
+                    !loading && events.length === 0 &&
                     <h1 className="text-center mt-4">Sorry, No event found</h1>
                 }
                 <div className="mt-4 d-flex justify-content-center">
