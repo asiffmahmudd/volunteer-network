@@ -1,4 +1,4 @@
-<h1>An Ecommerce site for buying books</h1>
+<h1>A site where different volunteer events can be found and users can register for those events</h1>
 <h3>
   Features:
   <ul>
