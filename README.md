@@ -8,5 +8,5 @@
     <li>Admin can see the list of the volunteers and can remove them if he/she wants to</li>
   </ul>
 </h3>
-<h3>Technologies used: React, Express, NodeJs, MongoDB, Bootstrap, HTML, CSS, Firebase, Heroku</h3>
+<h3>Technologies used: React, Express, NodeJs, MongoDB, Bootstrap, JSX, CSS, Firebase, Heroku</h3>
 <h1><a href="https://volunteer-network-67cb1.web.app/" target="_blank">Click here to see live</a></h1>
