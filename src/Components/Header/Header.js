@@ -1,21 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../img/logo.png';
-import { UserContext } from '../../App';
-import { handleSignOut } from '../../firebaseManager';
+import { useAuth } from '../../Context/AuthContext';
 
 const Header = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
+    const {loggedInUser, handleSignOut} = useAuth()
     const logout = () => {
-        handleSignOut()
-        .then(data => {
-            if(data){
-                setLoggedInUser({});
-            }
-        })
+        handleSignOut();
     }
 
     const btnStyle = {
@@ -46,7 +39,7 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/blog">Blog</Link>
                             </li>
-                            { !loggedInUser?.isLoggedIn &&
+                            { !loggedInUser?.email &&
                             <>
                                 <li className="nav-item" style={btnStyle}>
                                     <Link className="nav-link" to="/register"><button className="register-btn btn btn-primary">Register</button></Link>
@@ -54,7 +47,7 @@ const Header = () => {
                                 
                             </>
                             }
-                            { loggedInUser?.isLoggedIn &&
+                            { loggedInUser?.email &&
                             <>
                                 <li className="nav-item">
                                     {loggedInUser?.name}

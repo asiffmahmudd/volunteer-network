@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -13,14 +13,14 @@ import Blog from "./Components/Blog/Blog";
 import Donation from "./Components/Donation/Donation";
 import Events from "./Components/Events/Events";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import { AuthProvider } from "./Context/AuthContext";
 
 export const UserContext = createContext();
 
 function App() {
 
-  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <AuthProvider>
       <Router>
           <Switch>
             <Route exact path="/">
@@ -46,7 +46,7 @@ function App() {
             </PrivateRoute>
           </Switch>
       </Router>
-    </UserContext.Provider>
+    </AuthProvider>
   );
 }
 

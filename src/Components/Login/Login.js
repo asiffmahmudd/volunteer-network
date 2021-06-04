@@ -1,24 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import RegisterHeader from '../RegisterHeader/RegisterHeader';
 import './Login.css';
 import google from '../../img/google.png';
-import { handleSignIn } from '../../firebaseManager';
-import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
+import { useAuth } from '../../Context/AuthContext';
 
 const Login = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {handleSignIn} = useAuth()
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
 
-    const signIn = () => {
-        handleSignIn()
-        .then(data => {
-            setLoggedInUser(data);
-            history.replace(from);
-        })
+    const signIn = async () => {
+        await handleSignIn()
+        history.replace(from);
     }
     return (
         <div className="login">
