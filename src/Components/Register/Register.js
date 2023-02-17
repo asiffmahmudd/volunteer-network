@@ -3,13 +3,14 @@ import RegisterHeader from '../RegisterHeader/RegisterHeader';
 import './Register.css';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
+import { serverUrl } from '../../serverUrl';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const history = useHistory();
     
     const onSubmit = data => {
-        fetch('https://volunteernetworkserver.herokuapp.com/addVolunteer', {
+        fetch(serverUrl+'/addVolunteer', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'

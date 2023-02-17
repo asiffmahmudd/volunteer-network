@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import './VolunteerList.css';
+import { serverUrl } from '../../serverUrl';
 
 const VolunteerList = () => {
 
@@ -9,7 +10,7 @@ const VolunteerList = () => {
     const [change, setChange] = useState(false);
 
     useEffect(() => {
-        fetch('https://volunteernetworkserver.herokuapp.com/volunteerList')
+        fetch(serverUrl+'/volunteerList')
         .then(res => res.json())
         .then(data => {
             setVolunteers(data)  
@@ -18,7 +19,7 @@ const VolunteerList = () => {
 
     const handleDelete = (id) => {
         setChange(true);
-        fetch(`https://volunteernetworkserver.herokuapp.com/deleteVolunteer/${id}`, {
+        fetch(serverUrl+`/deleteVolunteer/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())

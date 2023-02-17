@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons'
 import './AddEvent.css';
+import { serverUrl } from '../../serverUrl';
 
 const AddEvent = () => {
 
@@ -60,7 +61,7 @@ const AddEvent = () => {
     }
 
     const submitData = (eventData) => {
-        fetch('https://volunteernetworkserver.herokuapp.com/addEvent/', {
+        fetch(serverUrl+'/addEvent/', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

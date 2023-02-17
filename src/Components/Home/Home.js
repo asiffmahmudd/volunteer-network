@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { serverUrl } from '../../serverUrl';
 import Header from '../Header/Header';
 import SingleEvent from '../SingleEvent/SingleEvent';
 import './Home.css';
@@ -14,10 +15,10 @@ const Home = () => {
         let url = "";
         document.getElementById("spinner").style.display = 'block';
         if(search === ""){
-            url = 'https://volunteernetworkserver.herokuapp.com/events/';
+            url = serverUrl+'/events/';
         }
         else{
-            url = `https://volunteernetworkserver.herokuapp.com/event/${search}`;
+            url = serverUrl+`/event/${search}`;
         }
 
         fetch(url)
